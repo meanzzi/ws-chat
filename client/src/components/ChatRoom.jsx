@@ -18,8 +18,9 @@ function ChatRoom({ nickname }) {
   }
 
   return (
-    <div className="min-h-screen bg-white flex justify-center">
-      <div className="w-full max-w-lg flex flex-col h-screen">
+    // 모바일 브라우저 주소창 높이를 포함한 실제 뷰포트(dvh) 사용
+    <div className="bg-white flex justify-center h-[100dvh]">
+      <div className="w-full max-w-lg flex flex-col h-full border-x border-gray-100">
 
         {/* 헤더 */}
         <header className="bg-[#bdbbff] px-4 py-3 flex items-center justify-between shrink-0">
@@ -27,8 +28,8 @@ function ChatRoom({ nickname }) {
           <span className="text-white text-sm">{nickname}</span>
         </header>
 
-        {/* 연결 끊김 배너 — isConnected가 false일 때만 표시 */}
-        {!isConnected && (
+        {/* 연결 끊김 배너 — isConnected가 false(null 아님)일 때만 표시 */}
+        {isConnected === false && (
           <div className="bg-red-50 text-red-500 text-sm text-center py-2 shrink-0">
             연결이 끊겼습니다
           </div>

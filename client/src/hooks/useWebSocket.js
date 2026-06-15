@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 // 반환값: { messages, sendMessage, isConnected }
 export function useWebSocket(nickname) {
   const [messages, setMessages] = useState([]);
-  const [isConnected, setIsConnected] = useState(false);
+  // null: 연결 시도 중, true: 연결됨, false: 연결 끊김
+  const [isConnected, setIsConnected] = useState(null);
   const socketRef = useRef(null);
 
   useEffect(() => {
